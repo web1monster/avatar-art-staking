@@ -131,7 +131,7 @@ contract AvatarArtStaking is IAvatarArtStaking, Runnable{
     /**
      * @dev Get user ticket slot for receiving NFT
      */ 
-    function getUserNftTicket(address account, uint nftStageIndex) external override view returns(uint){
+    function getUserNftTicket(address account, uint nftStageIndex, bool isAllTime) external override view returns(uint){
         require(nftStageIndex < _nftStages.length, "NFT stage index is invalid");
         StakingHistory[] memory stakingHistories = _userStakingHistories[account];
         if(stakingHistories.length == 0)
@@ -156,6 +156,10 @@ contract AvatarArtStaking is IAvatarArtStaking, Runnable{
             result += stakedAmount;
             
             nftStage.startTime = nextDay;
+            if(!isAllTime){
+                if(nftStage.startTime >= _now())
+                    break;
+            }
         }
         
         return result;
