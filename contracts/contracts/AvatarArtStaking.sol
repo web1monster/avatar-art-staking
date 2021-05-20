@@ -11,6 +11,7 @@ contract AvatarArtStaking is IAvatarArtStaking, Runnable{
         uint startTime;
         uint endTime;
         bool isActive;
+        bool isAllowWithdrawal;
     }
     
     struct StakingHistory{
@@ -19,6 +20,7 @@ contract AvatarArtStaking is IAvatarArtStaking, Runnable{
     }
     
     address internal _bnuTokenAddress;
+    uint internal _stopTime;
     
     //Store all BNU token amount that is staked in contract
     uint internal _totalStakedAmount;
@@ -59,7 +61,8 @@ contract AvatarArtStaking is IAvatarArtStaking, Runnable{
      * @dev Create new NFT stage
     */ 
     function createNftStage(uint startTime, uint endTime) external onlyOwner{
-        _nftStages.push(NftStage(startTime, endTime, true));
+        require(startTime < endTime, "Start time should be less than end time");
+        _nftStages.push(NftStage(startTime, endTime, true, false));
     }
     
     /**
@@ -80,6 +83,10 @@ contract AvatarArtStaking is IAvatarArtStaking, Runnable{
         return _nftStages;
     }
     
+    function getStopTime() external view returns(uint){
+        return _stopTime;
+    }
+    
     /**
      * @dev Get total BNU token amount staked in contract
      */ 
@@ -97,7 +104,7 @@ contract AvatarArtStaking is IAvatarArtStaking, Runnable{
         //Calculate pending amount
         uint userStakedAmount = _userStakeds[account];
         if(userStakedAmount > 0){
-            earnedAmount += _calculatePendingEarned(userStakedAmount, _userLastStakingTimes[account]);
+            earnedAmount += _calculatePendingEarned(userStakedAmount, _getUserRewardPendingTime(account));
         }
         
         return earnedAmount;
@@ -115,6 +122,10 @@ contract AvatarArtStaking is IAvatarArtStaking, Runnable{
      */ 
     function getStakingHistories(address account) external view returns(StakingHistory[] memory){
         return _userStakingHistories[account];
+    }
+    
+    function getUserLastStakingTime(address account) external view returns(uint){
+        return _getUserLastStakingTime(account);
     }
     
     /**
@@ -150,6 +161,10 @@ contract AvatarArtStaking is IAvatarArtStaking, Runnable{
         return result;
     }
     
+    function getUserRewardPendingTime(address account) external view returns(uint){
+        return _getUserRewardPendingTime(account);
+    }
+    
     /**
      * @dev Get total BNU token amount staked by `account`
      */ 
@@ -160,22 +175,12 @@ contract AvatarArtStaking is IAvatarArtStaking, Runnable{
     /**
      * @dev Remove NFT stage from data
      */ 
-    function removeNftStage(uint index) external onlyOwner returns(bool){
+    function setNftStage(uint index, bool isActive, bool isAllowWithdrawal) external onlyOwner returns(bool){
         uint nftStageLength = _nftStages.length;
         require(index < nftStageLength, "Index is invalid");
         
-        _nftStages[index].isActive = false;
-        
-        //NftStage[] memory nftStages = new NftStage[](nftStageLength -1);
-        //uint newIndex = 0;
-        //for(uint itemIndex = 0; itemIndex < nftStageLength; itemIndex++){
-            //if(itemIndex != index){
-                //nftStages[newIndex] = _nftStages[itemIndex];
-                //++;
-            //}
-        //}
-        
-        //_nftStages = nftStages;
+        _nftStages[index].isActive = isActive;
+        _nftStages[index].isAllowWithdrawal = isAllowWithdrawal;
         return true;
     }
     
@@ -230,26 +235,43 @@ contract AvatarArtStaking is IAvatarArtStaking, Runnable{
     }
     
     /**
+     * @dev Stop staking program
+     */ 
+    function stop() external onlyOwner{
+        _isRunning = false;
+        _stopTime = _now();
+        
+        emit Stopped(_now());
+    }
+    
+    /**
      * @dev See IAvatarArtStaking
      */ 
     function withdraw(uint amount) external override returns(bool){
         //Calculate interest and store with extra interest
         _calculateInterest(_msgSender());
         
+        (bool hasNftStage, NftStage memory nftStage) = _getCurrentNftStage();
+        
+        IERC20 bnuTokenContract = IERC20(_bnuTokenAddress);
+        
         //Calculate to withdraw staked amount
-        if(amount > 0){
+        if((!hasNftStage || nftStage.isAllowWithdrawal) && amount > 0){
             _userStakeds[_msgSender()] -= amount;
             _totalStakedAmount -= amount;
             
-            require(IERC20(_bnuTokenAddress).transfer(_msgSender(), amount), "Can not pay staked amount for user");
+            require(bnuTokenContract.transfer(_msgSender(), amount), "Can not pay staked amount for user");
         }
         
-        uint eanedAmount =  _userEarneds[_msgSender()];
+        uint eanedAmount = _userEarneds[_msgSender()];
         
         //Pay all interest
         if(eanedAmount > 0){
-            require(IERC20(_bnuTokenAddress).transfer(_msgSender(), eanedAmount), "Can not pay interest for user");
-            _userEarneds[_msgSender()] = 0;
+            //Make sure that user can withdraw all their staked amount
+            if(bnuTokenContract.balanceOf(address(this)) - _totalStakedAmount >= eanedAmount){
+                require(bnuTokenContract.transfer(_msgSender(), eanedAmount), "Can not pay interest for user");
+                _userEarneds[_msgSender()] = 0;
+            }
         }
         
         //Emit events 
@@ -264,19 +286,17 @@ contract AvatarArtStaking is IAvatarArtStaking, Runnable{
     function _calculateInterest(address account) internal{
         uint userStakedAmount = _userStakeds[account];
         if(userStakedAmount > 0){
-            uint earnedAmount = _calculatePendingEarned(userStakedAmount, _userLastStakingTimes[account]);
-            
-            _userLastStakingTimes[account] = _now();
+            uint earnedAmount = _calculatePendingEarned(userStakedAmount, _getUserRewardPendingTime(account));
             _userEarneds[account] += earnedAmount;
         }
+        _userLastStakingTimes[account] = _now();
     }
     
     /**
      * @dev Calculate interest for user from `lastStakingTime` to  `now`
      * based on user staked amount and apr
      */ 
-    function _calculatePendingEarned(uint userStakedAmount, uint lastStakingTime) internal view returns(uint){
-        uint pendingTime = _now() - lastStakingTime;
+    function _calculatePendingEarned(uint userStakedAmount, uint pendingTime) internal view returns(uint){
         return userStakedAmount * pendingTime * _apr / APR_MULTIPLIER / ONE_YEAR / 100;
     }
     
@@ -292,6 +312,30 @@ contract AvatarArtStaking is IAvatarArtStaking, Runnable{
         return false;
     }
     
+    /**
+     * @dev Get current NFT stage
+     */ 
+    function _getCurrentNftStage() internal view returns(bool, NftStage memory nftStage){
+        for(uint index = 0; index < _nftStages.length; index++){
+            nftStage = _nftStages[index];
+            if(nftStage.isActive && nftStage.startTime <= _now() && nftStage.endTime >= _now())
+                return (true, nftStage);
+        }
+        
+        return (false, nftStage);
+    }
+    
+    function _getUserLastStakingTime(address account) internal view returns(uint){
+        return _userLastStakingTimes[account];
+    }
+    
+    function _getUserRewardPendingTime(address account) internal view returns(uint){
+        if(!_isRunning && _stopTime > 0)
+            return _stopTime - _getUserLastStakingTime(account);
+        return _now() - _getUserLastStakingTime(account);
+    }
+    
     event Staked(address account, uint amount);
     event Withdrawn(address account, uint amount);
+    event Stopped(uint time);
 }
