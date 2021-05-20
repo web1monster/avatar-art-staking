@@ -14,7 +14,7 @@ contract AvatarArtStaking is IAvatarArtStaking, Runnable{
         bool isAllowWithdrawal;
     }
     
-    struct StakingHistory{
+    struct TransactionHistory{
         uint time;
         uint amount;
     }
@@ -43,7 +43,11 @@ contract AvatarArtStaking is IAvatarArtStaking, Runnable{
     
     //Store user's staking histories
     //Mapping user account => Staking history
-    mapping(address => StakingHistory[]) internal _userStakingHistories;
+    mapping(address => TransactionHistory[]) internal _stakingHistories;
+    
+    //Store user's withdrawal histories
+    //Mapping user account => withdrawal history
+    mapping(address => TransactionHistory[]) internal _withdrawHistories;
     
     //List of staking users 
     address[] internal _stakingUsers;
@@ -120,8 +124,8 @@ contract AvatarArtStaking is IAvatarArtStaking, Runnable{
     /**
      * @dev Get staking histories of `account`
      */ 
-    function getStakingHistories(address account) external view returns(StakingHistory[] memory){
-        return _userStakingHistories[account];
+    function getStakingHistories(address account) external view returns(TransactionHistory[] memory){
+        return _stakingHistories[account];
     }
     
     function getUserLastStakingTime(address account) external view returns(uint){
@@ -133,7 +137,7 @@ contract AvatarArtStaking is IAvatarArtStaking, Runnable{
      */ 
     function getUserNftTicket(address account, uint nftStageIndex, bool isAllTime) external override view returns(uint){
         require(nftStageIndex < _nftStages.length, "NFT stage index is invalid");
-        StakingHistory[] memory stakingHistories = _userStakingHistories[account];
+        TransactionHistory[] memory stakingHistories = _stakingHistories[account];
         if(stakingHistories.length == 0)
             return 0;
             
@@ -141,15 +145,24 @@ contract AvatarArtStaking is IAvatarArtStaking, Runnable{
         if(!nftStage.isActive)
             return 0;
             
+        TransactionHistory[] memory withdrawHistories = _withdrawHistories[account];
+        uint withdrawalIndex = 0;
         uint result = 0;
-        uint index = 0;
+        uint stakingIndex = 0;
         uint stakedAmount = 0;
         while(nftStage.startTime <= nftStage.endTime){
             uint nextDay = nftStage.startTime + ONE_DAY;
-            for(index; index < stakingHistories.length; index++){
-                StakingHistory memory stakingHistory = stakingHistories[index];
+            for(stakingIndex; stakingIndex < stakingHistories.length; stakingIndex++){
+                TransactionHistory memory stakingHistory = stakingHistories[stakingIndex];
                 if(stakingHistory.time >= nftStage.startTime && stakingHistory.time < nextDay){
                     stakedAmount += stakingHistory.amount;
+                }
+            }
+            
+            for(withdrawalIndex; withdrawalIndex < withdrawHistories.length; withdrawalIndex++){
+                TransactionHistory memory withdrawHistory = withdrawHistories[withdrawalIndex];
+                if(withdrawHistory.time >= nftStage.startTime && withdrawHistory.time < nextDay){
+                    stakedAmount -= withdrawHistory.amount;
                 }
             }
             
@@ -174,6 +187,13 @@ contract AvatarArtStaking is IAvatarArtStaking, Runnable{
      */ 
     function getUserStakedAmount(address account) external override view returns(uint){
         return _userStakeds[account];
+    }
+    
+    /**
+     * @dev Get withdrawal histories of `account`
+     */ 
+    function getWithdrawalHistories(address account) external view returns(TransactionHistory[] memory){
+        return _withdrawHistories[account];
     }
     
     /**
@@ -222,8 +242,8 @@ contract AvatarArtStaking is IAvatarArtStaking, Runnable{
         _calculateInterest(_msgSender());
         
         //Create staking history
-        StakingHistory[] storage stakingHistories = _userStakingHistories[_msgSender()];
-        stakingHistories.push(StakingHistory(_now(), amount));
+        TransactionHistory[] storage stakingHistories = _stakingHistories[_msgSender()];
+        stakingHistories.push(TransactionHistory(_now(), amount));
         
         //Update user staked amount and contract staked amount
         _userStakeds[_msgSender()] += amount;
@@ -277,6 +297,9 @@ contract AvatarArtStaking is IAvatarArtStaking, Runnable{
                 _userEarneds[_msgSender()] = 0;
             }
         }
+        
+        if(amount > 0)
+            _withdrawHistories[_msgSender()].push(TransactionHistory(_now(), amount));
         
         //Emit events 
         emit Withdrawn(_msgSender(), amount);
