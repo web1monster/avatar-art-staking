@@ -1,0 +1,877 @@
+{
+  "contractName": "Runnable",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "oldOwner",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnerChanged",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "approveToBeOwner",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getOwner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "requestChangeOwner",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "toggleRunningStatus",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.4+commit.c7e474f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"oldOwner\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnerChanged\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"approveToBeOwner\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getOwner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"requestChangeOwner\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"toggleRunningStatus\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/D/B/AvatarArt/contracts/avatar-art-staking/contracts/contracts/core/Runnable.sol\":\"Runnable\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/D/B/AvatarArt/contracts/avatar-art-staking/contracts/contracts/core/Context.sol\":{\"keccak256\":\"0xc02bcab533d62424769c60be674225476f653076d96e71475d4b92c9bf2ddc77\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d63a7f625bbafdb6038e5d75a3305e9c9fa4272c8011b667752c35d8b86e598b\",\"dweb:/ipfs/QmVuqyEdzyg7dL7kXe77BtPvKWenQM41sj6CbyZcNerCKg\"]},\"/D/B/AvatarArt/contracts/avatar-art-staking/contracts/contracts/core/Ownable.sol\":{\"keccak256\":\"0xb36f118f526a4c5d8a1d7f11326dd6f7829d925eb9ae82d7eec9f5d9dca0bb13\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://1f1412f0726721c8088f3fbf690e04c35506f3d4fe84cbcc3a7c4db9e53faaa6\",\"dweb:/ipfs/QmTWUf7fALfHRqLebSGGLhH4iynh6iXtRLbwF4U1XqFPHM\"]},\"/D/B/AvatarArt/contracts/avatar-art-staking/contracts/contracts/core/Runnable.sol\":{\"keccak256\":\"0x60621566d29d3f2e62563a37c9faa6d892c2c0524f666cc1f72b746762f89dc5\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://4b9d89972e9edc5c5597aa171f78803f44010416c6dd6ed1c99bacd3df7e8f63\",\"dweb:/ipfs/QmcuQJ4qcg3JHa2nUVZBo2BV87mVYgDWFxFiRMLFdxzWgM\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\r\n\r\npragma solidity ^0.8.0;\r\n\r\nimport \"./Ownable.sol\";\r\n\r\nabstract contract Runnable is Ownable {\r\n    \r\n    modifier isRunning{\r\n        require(_isRunning, \"Contract is paused\");\r\n        _;\r\n    }\r\n    \r\n    bool internal _isRunning;\r\n    \r\n    constructor(){\r\n        _isRunning = true;\r\n    }\r\n    \r\n    function toggleRunningStatus() external onlyOwner{\r\n        _isRunning = !_isRunning;\r\n    }\r\n}",
+  "sourcePath": "D:\\B\\AvatarArt\\contracts\\avatar-art-staking\\contracts\\contracts\\core\\Runnable.sol",
+  "ast": {
+    "absolutePath": "/D/B/AvatarArt/contracts/avatar-art-staking/contracts/contracts/core/Runnable.sol",
+    "exportedSymbols": {
+      "Context": [
+        1119
+      ],
+      "Ownable": [
+        1725
+      ],
+      "Runnable": [
+        1761
+      ]
+    },
+    "id": 1762,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1727,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "35:23:6"
+      },
+      {
+        "absolutePath": "/D/B/AvatarArt/contracts/avatar-art-staking/contracts/contracts/core/Ownable.sol",
+        "file": "./Ownable.sol",
+        "id": 1728,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 1762,
+        "sourceUnit": 1726,
+        "src": "62:23:6",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": true,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 1729,
+              "name": "Ownable",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 1725,
+              "src": "119:7:6"
+            },
+            "id": 1730,
+            "nodeType": "InheritanceSpecifier",
+            "src": "119:7:6"
+          }
+        ],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 1761,
+        "linearizedBaseContracts": [
+          1761,
+          1725,
+          1119
+        ],
+        "name": "Runnable",
+        "nameLocation": "107:8:6",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 1738,
+              "nodeType": "Block",
+              "src": "158:72:6",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 1733,
+                        "name": "_isRunning",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1741,
+                        "src": "177:10:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "hexValue": "436f6e747261637420697320706175736564",
+                        "id": 1734,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "189:20:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_e55600974a468a5baf1f1454a24481ec68f787ee02cd9f1d97c35ce2a8d2093d",
+                          "typeString": "literal_string \"Contract is paused\""
+                        },
+                        "value": "Contract is paused"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_e55600974a468a5baf1f1454a24481ec68f787ee02cd9f1d97c35ce2a8d2093d",
+                          "typeString": "literal_string \"Contract is paused\""
+                        }
+                      ],
+                      "id": 1732,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
+                      "referencedDeclaration": 4294967278,
+                      "src": "169:7:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 1735,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "169:41:6",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1736,
+                  "nodeType": "ExpressionStatement",
+                  "src": "169:41:6"
+                },
+                {
+                  "id": 1737,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "221:1:6"
+                }
+              ]
+            },
+            "id": 1739,
+            "name": "isRunning",
+            "nameLocation": "149:9:6",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 1731,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "158:0:6"
+            },
+            "src": "140:90:6",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 1741,
+            "mutability": "mutable",
+            "name": "_isRunning",
+            "nameLocation": "256:10:6",
+            "nodeType": "VariableDeclaration",
+            "scope": 1761,
+            "src": "242:24:6",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_bool",
+              "typeString": "bool"
+            },
+            "typeName": {
+              "id": 1740,
+              "name": "bool",
+              "nodeType": "ElementaryTypeName",
+              "src": "242:4:6",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bool",
+                "typeString": "bool"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 1748,
+              "nodeType": "Block",
+              "src": "292:36:6",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 1746,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 1744,
+                      "name": "_isRunning",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1741,
+                      "src": "303:10:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "hexValue": "74727565",
+                      "id": 1745,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "bool",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "316:4:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      "value": "true"
+                    },
+                    "src": "303:17:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 1747,
+                  "nodeType": "ExpressionStatement",
+                  "src": "303:17:6"
+                }
+              ]
+            },
+            "id": 1749,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nameLocation": "-1:-1:-1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1742,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "290:2:6"
+            },
+            "returnParameters": {
+              "id": 1743,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "292:0:6"
+            },
+            "scope": 1761,
+            "src": "279:49:6",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 1759,
+              "nodeType": "Block",
+              "src": "389:43:6",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 1757,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 1754,
+                      "name": "_isRunning",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1741,
+                      "src": "400:10:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 1756,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "UnaryOperation",
+                      "operator": "!",
+                      "prefix": true,
+                      "src": "413:11:6",
+                      "subExpression": {
+                        "id": 1755,
+                        "name": "_isRunning",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1741,
+                        "src": "414:10:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "src": "400:24:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 1758,
+                  "nodeType": "ExpressionStatement",
+                  "src": "400:24:6"
+                }
+              ]
+            },
+            "functionSelector": "e046a478",
+            "id": 1760,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "id": 1752,
+                "kind": "modifierInvocation",
+                "modifierName": {
+                  "id": 1751,
+                  "name": "onlyOwner",
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 1643,
+                  "src": "380:9:6"
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "380:9:6"
+              }
+            ],
+            "name": "toggleRunningStatus",
+            "nameLocation": "349:19:6",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1750,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "368:2:6"
+            },
+            "returnParameters": {
+              "id": 1753,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "389:0:6"
+            },
+            "scope": 1761,
+            "src": "340:92:6",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 1762,
+        "src": "89:346:6",
+        "usedErrors": []
+      }
+    ],
+    "src": "35:400:6"
+  },
+  "legacyAST": {
+    "absolutePath": "/D/B/AvatarArt/contracts/avatar-art-staking/contracts/contracts/core/Runnable.sol",
+    "exportedSymbols": {
+      "Context": [
+        1119
+      ],
+      "Ownable": [
+        1725
+      ],
+      "Runnable": [
+        1761
+      ]
+    },
+    "id": 1762,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1727,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "35:23:6"
+      },
+      {
+        "absolutePath": "/D/B/AvatarArt/contracts/avatar-art-staking/contracts/contracts/core/Ownable.sol",
+        "file": "./Ownable.sol",
+        "id": 1728,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 1762,
+        "sourceUnit": 1726,
+        "src": "62:23:6",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": true,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 1729,
+              "name": "Ownable",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 1725,
+              "src": "119:7:6"
+            },
+            "id": 1730,
+            "nodeType": "InheritanceSpecifier",
+            "src": "119:7:6"
+          }
+        ],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 1761,
+        "linearizedBaseContracts": [
+          1761,
+          1725,
+          1119
+        ],
+        "name": "Runnable",
+        "nameLocation": "107:8:6",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 1738,
+              "nodeType": "Block",
+              "src": "158:72:6",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 1733,
+                        "name": "_isRunning",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1741,
+                        "src": "177:10:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "hexValue": "436f6e747261637420697320706175736564",
+                        "id": 1734,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "189:20:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_e55600974a468a5baf1f1454a24481ec68f787ee02cd9f1d97c35ce2a8d2093d",
+                          "typeString": "literal_string \"Contract is paused\""
+                        },
+                        "value": "Contract is paused"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_e55600974a468a5baf1f1454a24481ec68f787ee02cd9f1d97c35ce2a8d2093d",
+                          "typeString": "literal_string \"Contract is paused\""
+                        }
+                      ],
+                      "id": 1732,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
+                      "referencedDeclaration": 4294967278,
+                      "src": "169:7:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 1735,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "169:41:6",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1736,
+                  "nodeType": "ExpressionStatement",
+                  "src": "169:41:6"
+                },
+                {
+                  "id": 1737,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "221:1:6"
+                }
+              ]
+            },
+            "id": 1739,
+            "name": "isRunning",
+            "nameLocation": "149:9:6",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 1731,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "158:0:6"
+            },
+            "src": "140:90:6",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 1741,
+            "mutability": "mutable",
+            "name": "_isRunning",
+            "nameLocation": "256:10:6",
+            "nodeType": "VariableDeclaration",
+            "scope": 1761,
+            "src": "242:24:6",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_bool",
+              "typeString": "bool"
+            },
+            "typeName": {
+              "id": 1740,
+              "name": "bool",
+              "nodeType": "ElementaryTypeName",
+              "src": "242:4:6",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bool",
+                "typeString": "bool"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 1748,
+              "nodeType": "Block",
+              "src": "292:36:6",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 1746,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 1744,
+                      "name": "_isRunning",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1741,
+                      "src": "303:10:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "hexValue": "74727565",
+                      "id": 1745,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "bool",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "316:4:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      "value": "true"
+                    },
+                    "src": "303:17:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 1747,
+                  "nodeType": "ExpressionStatement",
+                  "src": "303:17:6"
+                }
+              ]
+            },
+            "id": 1749,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nameLocation": "-1:-1:-1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1742,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "290:2:6"
+            },
+            "returnParameters": {
+              "id": 1743,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "292:0:6"
+            },
+            "scope": 1761,
+            "src": "279:49:6",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 1759,
+              "nodeType": "Block",
+              "src": "389:43:6",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 1757,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 1754,
+                      "name": "_isRunning",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1741,
+                      "src": "400:10:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 1756,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "UnaryOperation",
+                      "operator": "!",
+                      "prefix": true,
+                      "src": "413:11:6",
+                      "subExpression": {
+                        "id": 1755,
+                        "name": "_isRunning",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1741,
+                        "src": "414:10:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "src": "400:24:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 1758,
+                  "nodeType": "ExpressionStatement",
+                  "src": "400:24:6"
+                }
+              ]
+            },
+            "functionSelector": "e046a478",
+            "id": 1760,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "id": 1752,
+                "kind": "modifierInvocation",
+                "modifierName": {
+                  "id": 1751,
+                  "name": "onlyOwner",
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 1643,
+                  "src": "380:9:6"
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "380:9:6"
+              }
+            ],
+            "name": "toggleRunningStatus",
+            "nameLocation": "349:19:6",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1750,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "368:2:6"
+            },
+            "returnParameters": {
+              "id": 1753,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "389:0:6"
+            },
+            "scope": 1761,
+            "src": "340:92:6",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 1762,
+        "src": "89:346:6",
+        "usedErrors": []
+      }
+    ],
+    "src": "35:400:6"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.4+commit.c7e474f2.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.1",
+  "updatedAt": "2021-05-20T08:53:28.140Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

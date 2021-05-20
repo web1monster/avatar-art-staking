@@ -1,0 +1,1679 @@
+{
+  "contractName": "IAvatarArtStaking",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "getApr",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getTotalStaked",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "getUserEarnedAmount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getStakingUsers",
+      "outputs": [
+        {
+          "internalType": "address[]",
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "nftStageIndex",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "isAllTime",
+          "type": "bool"
+        }
+      ],
+      "name": "getUserNftTicket",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "getUserStakedAmount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "stake",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "withdraw",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.4+commit.c7e474f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getApr\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getStakingUsers\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getTotalStaked\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"getUserEarnedAmount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"nftStageIndex\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isAllTime\",\"type\":\"bool\"}],\"name\":\"getUserNftTicket\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"getUserStakedAmount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"stake\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"withdraw\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"getApr()\":{\"details\":\"Get APR\"},\"getStakingUsers()\":{\"details\":\"Get list of staking users\"},\"getTotalStaked()\":{\"details\":\"Get total BNU token amount staked in contract\"},\"getUserEarnedAmount(address)\":{\"details\":\"Get user's BNU earned\"},\"getUserNftTicket(address,uint256,bool)\":{\"details\":\"Get user ticket slot for receiving NFT\"},\"getUserStakedAmount(address)\":{\"details\":\"Get total BNU token amount staked by `account`\"},\"stake(uint256)\":{\"details\":\"User join to stake BNU and have a chance to receive an NFT from AvatarArt  An NFT will be available within 30 days from contract created or date will be configured After that, this contract be only used to stake\"},\"withdraw(uint256)\":{\"details\":\"User withdraw staked BNU from contract User will receive all staked BNU and reward BNU based on APY configuration\"}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/D/B/AvatarArt/contracts/avatar-art-staking/contracts/contracts/interfaces/IAvatarArtStaking.sol\":\"IAvatarArtStaking\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/D/B/AvatarArt/contracts/avatar-art-staking/contracts/contracts/interfaces/IAvatarArtStaking.sol\":{\"keccak256\":\"0x32ed7e681ee895a52877085799eb6faccffa51eab415d72e874be3d1b8f4c544\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://f37a29639f9b9e72c43b05d6852cbb1d9b6507d1f9c9fef97da51db43b1033a0\",\"dweb:/ipfs/QmQeYw6crijEjZCsQxvCa6R8gjQ2ChLETJQBodDE3o9A1T\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\r\n\r\npragma solidity ^0.8.0;\r\n\r\ninterface IAvatarArtStaking{\r\n    /**\r\n     * @dev Get APR\r\n    */\r\n    function getApr() external view returns(uint);\r\n    \r\n    /**\r\n     * @dev Get total BNU token amount staked in contract\r\n     */ \r\n    function getTotalStaked() external view returns(uint);\r\n    \r\n    /**\r\n     * @dev Get user's BNU earned\r\n     */ \r\n    function getUserEarnedAmount(address account) external view returns(uint);\r\n    \r\n    /**\r\n     * @dev Get list of staking users\r\n     */ \r\n    function getStakingUsers() external view returns(address[] memory);\r\n    \r\n    /**\r\n     * @dev Get user ticket slot for receiving NFT\r\n     */ \r\n    function getUserNftTicket(address account, uint nftStageIndex, bool isAllTime) external view returns(uint);\r\n    \r\n    /**\r\n     * @dev Get total BNU token amount staked by `account`\r\n     */ \r\n    function getUserStakedAmount(address account) external view returns(uint);\r\n    \r\n    /**\r\n     * @dev User join to stake BNU and have a chance to receive an NFT from AvatarArt\r\n     * \r\n     * An NFT will be available within 30 days from contract created or date will be configured\r\n     * After that, this contract be only used to stake\r\n     */ \r\n    function stake(uint amount) external returns(bool);\r\n    \r\n    /**\r\n     * @dev User withdraw staked BNU from contract\r\n     * User will receive all staked BNU and reward BNU based on APY configuration\r\n     */ \r\n    function withdraw(uint amount) external returns(bool);\r\n}",
+  "sourcePath": "D:\\B\\AvatarArt\\contracts\\avatar-art-staking\\contracts\\contracts\\interfaces\\IAvatarArtStaking.sol",
+  "ast": {
+    "absolutePath": "/D/B/AvatarArt/contracts/avatar-art-staking/contracts/contracts/interfaces/IAvatarArtStaking.sol",
+    "exportedSymbols": {
+      "IAvatarArtStaking": [
+        1827
+      ]
+    },
+    "id": 1828,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1763,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "35:23:7"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 1827,
+        "linearizedBaseContracts": [
+          1827
+        ],
+        "name": "IAvatarArtStaking",
+        "nameLocation": "72:17:7",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 1764,
+              "nodeType": "StructuredDocumentation",
+              "src": "96:32:7",
+              "text": " @dev Get APR"
+            },
+            "functionSelector": "845bc804",
+            "id": 1769,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getApr",
+            "nameLocation": "143:6:7",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1765,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "149:2:7"
+            },
+            "returnParameters": {
+              "id": 1768,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1767,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1769,
+                  "src": "174:4:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1766,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "174:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "173:6:7"
+            },
+            "scope": 1827,
+            "src": "134:46:7",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 1770,
+              "nodeType": "StructuredDocumentation",
+              "src": "192:71:7",
+              "text": " @dev Get total BNU token amount staked in contract"
+            },
+            "functionSelector": "0917e776",
+            "id": 1775,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getTotalStaked",
+            "nameLocation": "279:14:7",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1771,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "293:2:7"
+            },
+            "returnParameters": {
+              "id": 1774,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1773,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1775,
+                  "src": "318:4:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1772,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "318:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "317:6:7"
+            },
+            "scope": 1827,
+            "src": "270:54:7",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 1776,
+              "nodeType": "StructuredDocumentation",
+              "src": "336:47:7",
+              "text": " @dev Get user's BNU earned"
+            },
+            "functionSelector": "0c917c47",
+            "id": 1783,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getUserEarnedAmount",
+            "nameLocation": "399:19:7",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1779,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1778,
+                  "mutability": "mutable",
+                  "name": "account",
+                  "nameLocation": "427:7:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1783,
+                  "src": "419:15:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1777,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "419:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "418:17:7"
+            },
+            "returnParameters": {
+              "id": 1782,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1781,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1783,
+                  "src": "458:4:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1780,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "458:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "457:6:7"
+            },
+            "scope": 1827,
+            "src": "390:74:7",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 1784,
+              "nodeType": "StructuredDocumentation",
+              "src": "476:51:7",
+              "text": " @dev Get list of staking users"
+            },
+            "functionSelector": "1d2673b7",
+            "id": 1790,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getStakingUsers",
+            "nameLocation": "543:15:7",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1785,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "558:2:7"
+            },
+            "returnParameters": {
+              "id": 1789,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1788,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1790,
+                  "src": "583:16:7",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+                    "typeString": "address[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 1786,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "583:7:7",
+                      "stateMutability": "nonpayable",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "id": 1787,
+                    "nodeType": "ArrayTypeName",
+                    "src": "583:9:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                      "typeString": "address[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "582:18:7"
+            },
+            "scope": 1827,
+            "src": "534:67:7",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 1791,
+              "nodeType": "StructuredDocumentation",
+              "src": "613:64:7",
+              "text": " @dev Get user ticket slot for receiving NFT"
+            },
+            "functionSelector": "91a60036",
+            "id": 1802,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getUserNftTicket",
+            "nameLocation": "693:16:7",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1798,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1793,
+                  "mutability": "mutable",
+                  "name": "account",
+                  "nameLocation": "718:7:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1802,
+                  "src": "710:15:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1792,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "710:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1795,
+                  "mutability": "mutable",
+                  "name": "nftStageIndex",
+                  "nameLocation": "732:13:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1802,
+                  "src": "727:18:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1794,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "727:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1797,
+                  "mutability": "mutable",
+                  "name": "isAllTime",
+                  "nameLocation": "752:9:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1802,
+                  "src": "747:14:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1796,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "747:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "709:53:7"
+            },
+            "returnParameters": {
+              "id": 1801,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1800,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1802,
+                  "src": "785:4:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1799,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "785:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "784:6:7"
+            },
+            "scope": 1827,
+            "src": "684:107:7",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 1803,
+              "nodeType": "StructuredDocumentation",
+              "src": "803:72:7",
+              "text": " @dev Get total BNU token amount staked by `account`"
+            },
+            "functionSelector": "94465b21",
+            "id": 1810,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getUserStakedAmount",
+            "nameLocation": "891:19:7",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1806,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1805,
+                  "mutability": "mutable",
+                  "name": "account",
+                  "nameLocation": "919:7:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1810,
+                  "src": "911:15:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1804,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "911:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "910:17:7"
+            },
+            "returnParameters": {
+              "id": 1809,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1808,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1810,
+                  "src": "950:4:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1807,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "950:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "949:6:7"
+            },
+            "scope": 1827,
+            "src": "882:74:7",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 1811,
+              "nodeType": "StructuredDocumentation",
+              "src": "968:261:7",
+              "text": " @dev User join to stake BNU and have a chance to receive an NFT from AvatarArt\n \n An NFT will be available within 30 days from contract created or date will be configured\n After that, this contract be only used to stake"
+            },
+            "functionSelector": "a694fc3a",
+            "id": 1818,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "stake",
+            "nameLocation": "1245:5:7",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1814,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1813,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "1256:6:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1818,
+                  "src": "1251:11:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1812,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1251:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1250:13:7"
+            },
+            "returnParameters": {
+              "id": 1817,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1816,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1818,
+                  "src": "1281:4:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1815,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1281:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1280:6:7"
+            },
+            "scope": 1827,
+            "src": "1236:51:7",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 1819,
+              "nodeType": "StructuredDocumentation",
+              "src": "1299:147:7",
+              "text": " @dev User withdraw staked BNU from contract\n User will receive all staked BNU and reward BNU based on APY configuration"
+            },
+            "functionSelector": "2e1a7d4d",
+            "id": 1826,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "withdraw",
+            "nameLocation": "1462:8:7",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1822,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1821,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "1476:6:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1826,
+                  "src": "1471:11:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1820,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1471:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1470:13:7"
+            },
+            "returnParameters": {
+              "id": 1825,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1824,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1826,
+                  "src": "1501:4:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1823,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1501:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1500:6:7"
+            },
+            "scope": 1827,
+            "src": "1453:54:7",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 1828,
+        "src": "62:1448:7",
+        "usedErrors": []
+      }
+    ],
+    "src": "35:1475:7"
+  },
+  "legacyAST": {
+    "absolutePath": "/D/B/AvatarArt/contracts/avatar-art-staking/contracts/contracts/interfaces/IAvatarArtStaking.sol",
+    "exportedSymbols": {
+      "IAvatarArtStaking": [
+        1827
+      ]
+    },
+    "id": 1828,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1763,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "35:23:7"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 1827,
+        "linearizedBaseContracts": [
+          1827
+        ],
+        "name": "IAvatarArtStaking",
+        "nameLocation": "72:17:7",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 1764,
+              "nodeType": "StructuredDocumentation",
+              "src": "96:32:7",
+              "text": " @dev Get APR"
+            },
+            "functionSelector": "845bc804",
+            "id": 1769,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getApr",
+            "nameLocation": "143:6:7",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1765,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "149:2:7"
+            },
+            "returnParameters": {
+              "id": 1768,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1767,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1769,
+                  "src": "174:4:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1766,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "174:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "173:6:7"
+            },
+            "scope": 1827,
+            "src": "134:46:7",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 1770,
+              "nodeType": "StructuredDocumentation",
+              "src": "192:71:7",
+              "text": " @dev Get total BNU token amount staked in contract"
+            },
+            "functionSelector": "0917e776",
+            "id": 1775,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getTotalStaked",
+            "nameLocation": "279:14:7",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1771,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "293:2:7"
+            },
+            "returnParameters": {
+              "id": 1774,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1773,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1775,
+                  "src": "318:4:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1772,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "318:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "317:6:7"
+            },
+            "scope": 1827,
+            "src": "270:54:7",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 1776,
+              "nodeType": "StructuredDocumentation",
+              "src": "336:47:7",
+              "text": " @dev Get user's BNU earned"
+            },
+            "functionSelector": "0c917c47",
+            "id": 1783,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getUserEarnedAmount",
+            "nameLocation": "399:19:7",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1779,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1778,
+                  "mutability": "mutable",
+                  "name": "account",
+                  "nameLocation": "427:7:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1783,
+                  "src": "419:15:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1777,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "419:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "418:17:7"
+            },
+            "returnParameters": {
+              "id": 1782,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1781,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1783,
+                  "src": "458:4:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1780,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "458:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "457:6:7"
+            },
+            "scope": 1827,
+            "src": "390:74:7",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 1784,
+              "nodeType": "StructuredDocumentation",
+              "src": "476:51:7",
+              "text": " @dev Get list of staking users"
+            },
+            "functionSelector": "1d2673b7",
+            "id": 1790,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getStakingUsers",
+            "nameLocation": "543:15:7",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1785,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "558:2:7"
+            },
+            "returnParameters": {
+              "id": 1789,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1788,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1790,
+                  "src": "583:16:7",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+                    "typeString": "address[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 1786,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "583:7:7",
+                      "stateMutability": "nonpayable",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "id": 1787,
+                    "nodeType": "ArrayTypeName",
+                    "src": "583:9:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                      "typeString": "address[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "582:18:7"
+            },
+            "scope": 1827,
+            "src": "534:67:7",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 1791,
+              "nodeType": "StructuredDocumentation",
+              "src": "613:64:7",
+              "text": " @dev Get user ticket slot for receiving NFT"
+            },
+            "functionSelector": "91a60036",
+            "id": 1802,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getUserNftTicket",
+            "nameLocation": "693:16:7",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1798,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1793,
+                  "mutability": "mutable",
+                  "name": "account",
+                  "nameLocation": "718:7:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1802,
+                  "src": "710:15:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1792,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "710:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1795,
+                  "mutability": "mutable",
+                  "name": "nftStageIndex",
+                  "nameLocation": "732:13:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1802,
+                  "src": "727:18:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1794,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "727:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1797,
+                  "mutability": "mutable",
+                  "name": "isAllTime",
+                  "nameLocation": "752:9:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1802,
+                  "src": "747:14:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1796,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "747:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "709:53:7"
+            },
+            "returnParameters": {
+              "id": 1801,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1800,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1802,
+                  "src": "785:4:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1799,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "785:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "784:6:7"
+            },
+            "scope": 1827,
+            "src": "684:107:7",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 1803,
+              "nodeType": "StructuredDocumentation",
+              "src": "803:72:7",
+              "text": " @dev Get total BNU token amount staked by `account`"
+            },
+            "functionSelector": "94465b21",
+            "id": 1810,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getUserStakedAmount",
+            "nameLocation": "891:19:7",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1806,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1805,
+                  "mutability": "mutable",
+                  "name": "account",
+                  "nameLocation": "919:7:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1810,
+                  "src": "911:15:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1804,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "911:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "910:17:7"
+            },
+            "returnParameters": {
+              "id": 1809,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1808,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1810,
+                  "src": "950:4:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1807,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "950:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "949:6:7"
+            },
+            "scope": 1827,
+            "src": "882:74:7",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 1811,
+              "nodeType": "StructuredDocumentation",
+              "src": "968:261:7",
+              "text": " @dev User join to stake BNU and have a chance to receive an NFT from AvatarArt\n \n An NFT will be available within 30 days from contract created or date will be configured\n After that, this contract be only used to stake"
+            },
+            "functionSelector": "a694fc3a",
+            "id": 1818,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "stake",
+            "nameLocation": "1245:5:7",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1814,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1813,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "1256:6:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1818,
+                  "src": "1251:11:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1812,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1251:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1250:13:7"
+            },
+            "returnParameters": {
+              "id": 1817,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1816,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1818,
+                  "src": "1281:4:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1815,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1281:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1280:6:7"
+            },
+            "scope": 1827,
+            "src": "1236:51:7",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 1819,
+              "nodeType": "StructuredDocumentation",
+              "src": "1299:147:7",
+              "text": " @dev User withdraw staked BNU from contract\n User will receive all staked BNU and reward BNU based on APY configuration"
+            },
+            "functionSelector": "2e1a7d4d",
+            "id": 1826,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "withdraw",
+            "nameLocation": "1462:8:7",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1822,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1821,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "1476:6:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1826,
+                  "src": "1471:11:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1820,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1471:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1470:13:7"
+            },
+            "returnParameters": {
+              "id": 1825,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1824,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1826,
+                  "src": "1501:4:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1823,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1501:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1500:6:7"
+            },
+            "scope": 1827,
+            "src": "1453:54:7",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 1828,
+        "src": "62:1448:7",
+        "usedErrors": []
+      }
+    ],
+    "src": "35:1475:7"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.4+commit.c7e474f2.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.1",
+  "updatedAt": "2021-05-20T08:53:28.142Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "getApr()": {
+        "details": "Get APR"
+      },
+      "getStakingUsers()": {
+        "details": "Get list of staking users"
+      },
+      "getTotalStaked()": {
+        "details": "Get total BNU token amount staked in contract"
+      },
+      "getUserEarnedAmount(address)": {
+        "details": "Get user's BNU earned"
+      },
+      "getUserNftTicket(address,uint256,bool)": {
+        "details": "Get user ticket slot for receiving NFT"
+      },
+      "getUserStakedAmount(address)": {
+        "details": "Get total BNU token amount staked by `account`"
+      },
+      "stake(uint256)": {
+        "details": "User join to stake BNU and have a chance to receive an NFT from AvatarArt  An NFT will be available within 30 days from contract created or date will be configured After that, this contract be only used to stake"
+      },
+      "withdraw(uint256)": {
+        "details": "User withdraw staked BNU from contract User will receive all staked BNU and reward BNU based on APY configuration"
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
