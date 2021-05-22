@@ -24,11 +24,6 @@ interface IAvatarArtStaking{
     function getStakingUsers() external view returns(address[] memory);
     
     /**
-     * @dev Get user ticket slot for receiving NFT
-     */ 
-    function getUserNftTicket(address account, uint nftStageIndex, bool isAllTime) external view returns(uint);
-    
-    /**
      * @dev Get total BNU token amount staked by `account`
      */ 
     function getUserStakedAmount(address account) external view returns(uint);

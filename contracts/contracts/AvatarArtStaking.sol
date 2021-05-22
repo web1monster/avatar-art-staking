@@ -132,52 +132,6 @@ contract AvatarArtStaking is IAvatarArtStaking, Runnable{
         return _getUserLastStakingTime(account);
     }
     
-    /**
-     * @dev Get user ticket slot for receiving NFT
-     */ 
-    function getUserNftTicket(address account, uint nftStageIndex, bool isAllTime) external override view returns(uint){
-        require(nftStageIndex < _nftStages.length, "NFT stage index is invalid");
-        TransactionHistory[] memory stakingHistories = _stakingHistories[account];
-        if(stakingHistories.length == 0)
-            return 0;
-            
-        NftStage memory nftStage = _nftStages[nftStageIndex];
-        if(!nftStage.isActive)
-            return 0;
-            
-        TransactionHistory[] memory withdrawHistories = _withdrawHistories[account];
-        uint withdrawalIndex = 0;
-        uint result = 0;
-        uint stakingIndex = 0;
-        uint stakedAmount = 0;
-        while(nftStage.startTime <= nftStage.endTime){
-            uint nextDay = nftStage.startTime + ONE_DAY;
-            for(stakingIndex; stakingIndex < stakingHistories.length; stakingIndex++){
-                TransactionHistory memory stakingHistory = stakingHistories[stakingIndex];
-                if(stakingHistory.time >= nftStage.startTime && stakingHistory.time < nextDay){
-                    stakedAmount += stakingHistory.amount;
-                }
-            }
-            
-            for(withdrawalIndex; withdrawalIndex < withdrawHistories.length; withdrawalIndex++){
-                TransactionHistory memory withdrawHistory = withdrawHistories[withdrawalIndex];
-                if(withdrawHistory.time >= nftStage.startTime && withdrawHistory.time < nextDay){
-                    stakedAmount -= withdrawHistory.amount;
-                }
-            }
-            
-            result += stakedAmount;
-            
-            nftStage.startTime = nextDay;
-            if(!isAllTime){
-                if(nftStage.startTime >= _now())
-                    break;
-            }
-        }
-        
-        return result;
-    }
-    
     function getUserRewardPendingTime(address account) external view returns(uint){
         return _getUserRewardPendingTime(account);
     }
