@@ -218,6 +218,10 @@ contract AvatarArtStaking is IAvatarArtStaking, Runnable{
     function stop() external onlyOwner{
         _isRunning = false;
         _stopTime = _now();
+
+        IERC20 bnuTokenContract = IERC20(_bnuTokenAddress);
+        if(bnuTokenContract.balanceOf(address(this)) > _totalStakedAmount)
+            bnuTokenContract.transfer(_owner, bnuTokenContract.balanceOf(address(this)) - _totalStakedAmount);
         
         emit Stopped(_now());
     }
